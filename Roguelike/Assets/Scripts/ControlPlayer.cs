@@ -31,6 +31,9 @@ public class ControlPlayer : MonoBehaviour
 
     void MovePlayer()
     {
-        rigidbody2d.velocity = new Vector2(horizontal * speed, vertical * speed);
+        Vector2 vector2;
+        vector2.x = horizontal;
+        vector2.y = vertical;
+        rigidbody2d.velocity = vector2.normalized * speed;
     }
 }
