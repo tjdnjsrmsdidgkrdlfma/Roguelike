@@ -5,6 +5,7 @@ using UnityEngine;
 public class ControlPlayer : MonoBehaviour
 {
     public int speed;
+    public int hitpoint = 6;
     float horizontal, vertical;
 
     Rigidbody2D rigidbody2d;
@@ -35,5 +36,14 @@ public class ControlPlayer : MonoBehaviour
         vector2.x = horizontal;
         vector2.y = vertical;
         rigidbody2d.velocity = vector2.normalized * speed;
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy") == true)
+        {
+            hitpoint--;
+            Debug.Log(hitpoint);
+        }
     }
 }
