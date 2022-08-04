@@ -42,8 +42,7 @@ public class ControlPlayer : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") == true)
         {
-            hitpoint--;
-            Debug.Log(hitpoint);
+            
         }
     }
 }
