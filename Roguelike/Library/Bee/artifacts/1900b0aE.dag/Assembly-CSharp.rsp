@@ -380,6 +380,7 @@
 "Assets/Scripts/Bullet.cs"
 "Assets/Scripts/Classes.cs"
 "Assets/Scripts/ControlPlayer.cs"
+"Assets/Scripts/PlayerBullet.cs"
 -langversion:9.0
 
 /deterministic

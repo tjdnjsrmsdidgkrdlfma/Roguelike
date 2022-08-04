@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 1083849526}
   m_Layer: 0
   m_Name: Walls
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1569,7 +1569,7 @@ GameObject:
   - component: {fileID: 1956678237}
   - component: {fileID: 1956678236}
   - component: {fileID: 1956678240}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1703,4 +1703,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  hitpoint: 6
+  hit_point: 6
+  bullet_speed: 0

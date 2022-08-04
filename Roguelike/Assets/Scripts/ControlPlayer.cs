@@ -5,10 +5,14 @@ using UnityEngine;
 public class ControlPlayer : MonoBehaviour
 {
     public int speed;
-    public int hitpoint = 6;
+    public int hit_point;
+
+    public int bullet_speed;
+
     float horizontal, vertical;
 
     Rigidbody2D rigidbody2d;
+
     void Start()
     {
         rigidbody2d = this.gameObject.GetComponent<Rigidbody2D>();
@@ -17,12 +21,24 @@ public class ControlPlayer : MonoBehaviour
     void Update()
     {
         GetInput();
+        FireBullet();
     }
 
     void GetInput()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+    }
+
+    void FireBullet()
+    {
+        if (Input.GetMouseButtonDown(0) == true)
+        {
+            GameObject bullet_prefab = Resources.Load("Prefabs/PlayerBullet") as GameObject;
+            GameObject bullet = MonoBehaviour.Instantiate(bullet_prefab);
+
+            bullet.transform.position = this.transform.position;
+        }
     }
 
     void FixedUpdate()
@@ -42,7 +58,7 @@ public class ControlPlayer : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") == true)
         {
-            
+
         }
     }
 }
