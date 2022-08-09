@@ -1,3 +1,7 @@
+/*
+ * 중복되는 코드를 최대한 줄이기 위해서 중복되는 부분을 클래스로 만들어서 이 스크립트에 정리했습니다.
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,5 +40,41 @@ public class Enemy : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().flipX = true;
         }
+    }
+}
+
+public class Bullet : MonoBehaviour
+{
+    protected Rigidbody2D rigidbody2d;
+
+    protected int speed;
+    protected float remove_time;
+
+    protected void BulletStart()
+    {
+        rigidbody2d = this.GetComponent<Rigidbody2D>();
+        StartCoroutine("RemoveBullet");
+    }
+
+    IEnumerator RemoveBullet()
+    {
+        yield return new WaitForSeconds(remove_time);
+        Destroy(this.gameObject);
+    }
+
+    protected void BulletUpdate()
+    {
+
+    }
+
+    protected void BulletFixedUpdate()
+    {
+        rigidbody2d.velocity = transform.right * speed;
+    }
+
+    protected void BulletOnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Object"))
+            Destroy(this.gameObject);
     }
 }
