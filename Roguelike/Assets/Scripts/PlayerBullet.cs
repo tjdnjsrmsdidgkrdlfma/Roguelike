@@ -11,7 +11,7 @@ public class PlayerBullet : Bullet
     void Start()
     {
         speed = 10;
-        remove_time = 1f;
+        remove_time = 3f;
         BulletStart();
         RotateForwardMouse();
     }
@@ -35,6 +35,8 @@ public class PlayerBullet : Bullet
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        if (other.gameObject.CompareTag("Enemy"))
+            Destroy(this.gameObject);
         BulletOnCollisionEnter2D(other);
     }
 }
