@@ -20,9 +20,9 @@ TagManager:
   - EnemyBullet
   - Player
   - PlayerBullet
-  - CheckObjects
-  - 
-  - 
+  - Background
+  - Object
+  - Wall
   - 
   - 
   - 

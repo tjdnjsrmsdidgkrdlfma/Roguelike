@@ -2,6 +2,7 @@
  * 중복되는 코드를 최대한 줄이기 위해서 중복되는 부분을 클래스로 만들어서 이 스크립트에 정리했습니다.
 */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,8 +15,9 @@ public class Enemy : MonoBehaviour
     protected int hit_point;
     protected int attack_damage;
     protected float attack_delay;
-    protected int bullet_number;
     protected float bullet_speed;
+    protected float detect_range;
+    protected bool can_fire;
     #endregion
 
     protected GameObject player;
@@ -40,6 +42,22 @@ public class Enemy : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().flipX = true;
         }
+    }
+
+    protected void EnemyFixedUpdate()
+    {
+        FireRay();
+    }
+
+    void FireRay()
+    {
+        LayerMask mask = LayerMask.GetMask("Player") | LayerMask.GetMask("Object") | LayerMask.GetMask("Wall");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, detect_range, mask);
+
+        if (hit.collider != null && hit.collider.gameObject.CompareTag("Player") == true)
+            can_fire = true;
+        else
+            can_fire = false;
     }
 }
 

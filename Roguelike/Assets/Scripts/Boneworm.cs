@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Boneworm : Enemy
 {
+    public float detectrange;
+
     GameObject bullet_prefab;
 
     void Start()
     {
+        detectrange = 10;
+
         bullet_prefab = Resources.Load("Prefabs/BonewormBullet") as GameObject;
 
         EnemyStart();
@@ -15,28 +19,37 @@ public class Boneworm : Enemy
         StartCoroutine("FireBullet");
     }
 
-    void Update()
-    {
-        EnemyUpdate();
-    }
-
     void SetStats()
     {
         hit_point = 5;
         attack_damage = 1;
         attack_delay = 2.0f;
-        bullet_number = 1;
+        detect_range = 10f;
+        can_fire = false;
     }
 
     IEnumerator FireBullet()
     {
         while (true)
         {
-            GameObject bullet = MonoBehaviour.Instantiate(bullet_prefab);
-            bullet.transform.position = this.transform.position;
+            if (can_fire == true)
+            {
+                GameObject bullet = MonoBehaviour.Instantiate(bullet_prefab);
+                bullet.transform.position = this.transform.position;
+            }
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(attack_delay);
         }
+    }
+
+    void Update()
+    {
+        EnemyUpdate();
+    }
+
+    void FixedUpdate()
+    {
+        EnemyFixedUpdate();
     }
 
     //IEnumerator FireBullet()
