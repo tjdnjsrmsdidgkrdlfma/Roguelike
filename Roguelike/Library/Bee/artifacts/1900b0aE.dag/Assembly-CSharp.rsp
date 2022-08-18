@@ -374,11 +374,10 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
-"Assets/Enemy Galore 1 - Pixel Art/Script/EnemySelector.cs"
-"Assets/Enemy Galore 1 - Pixel Art/Script/EnemyTest.cs"
 "Assets/Scripts/Classes.cs"
-"Assets/Scripts/ControlPlayer.cs"
+"Assets/Scripts/Player.cs"
 "Assets/Scripts/PlayerBullet.cs"
+"Assets/Scripts/PlayerWeapon.cs"
 "Assets/Scripts/Worm.cs"
 "Assets/Scripts/WormBullet.cs"
 -langversion:9.0
