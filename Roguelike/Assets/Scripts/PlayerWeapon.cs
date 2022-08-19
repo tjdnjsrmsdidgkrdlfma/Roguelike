@@ -5,23 +5,29 @@ using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour
 {
+    GameObject player;
+    int temp;
 
     void Start()
     {
-
+        player = this.transform.parent.gameObject;
     }
 
     void FixedUpdate()
     {
-        RotateForwardMouse(); //Update에 넣으면 떨림 현상 발생
+        if (player.GetComponent<Player>().stop_weapon_moving == false)
+        {
+            RotateForwardMouse(); //Update에 넣으면 떨림 현상 발생
+            MoveWeapon((int)temp);
+        }
     }
 
     void RotateForwardMouse()
     {
         Vector3 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 45;
+        temp = (int)angle;
         this.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        MoveWeapon((int)angle);
     }
 
     void MoveWeapon(int angle) //마우스가 플레이어 위에 있으면 좋지 않은 현상 발생

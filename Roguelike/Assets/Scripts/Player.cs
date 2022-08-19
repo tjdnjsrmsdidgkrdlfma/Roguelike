@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 
     float horizontal, vertical;
 
+    public bool stop_weapon_moving;
+
     Rigidbody2D rigidbody2d;
 
     void Start()
@@ -54,11 +56,15 @@ public class Player : MonoBehaviour
         rigidbody2d.velocity = vector2.normalized * speed;
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy") == true)
-        {
+        if (other.gameObject.CompareTag("Crosshair") == true)
+            stop_weapon_moving = true;
+    }
 
-        }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Crosshair") == true)
+            stop_weapon_moving = false;
     }
 }
